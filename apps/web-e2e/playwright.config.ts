@@ -3,10 +3,7 @@ import { defineBddConfig } from 'playwright-bdd';
 import { workspaceRoot } from '@nx/devkit';
 import * as path from 'node:path';
 
-// playwright-bdd config is wired up here so `bddgen` runs cleanly even before
-// any .feature files exist. Module 01 adds the first feature; until then this
-// generates zero spec files and the smoke project below carries the suite.
-defineBddConfig({
+const testDir = defineBddConfig({
   features: './src/features/**/*.feature',
   steps: ['./src/steps/**/*.ts', './src/fixtures/**/*.ts'],
   outputDir: './src/.features-gen',
@@ -74,6 +71,11 @@ export default defineConfig({
       name: 'smoke',
       testDir: path.resolve(__dirname, 'src'),
       testMatch: /smoke\.spec\.ts/,
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'bdd',
+      testDir,
       use: { ...devices['Desktop Chrome'] },
     },
   ],
