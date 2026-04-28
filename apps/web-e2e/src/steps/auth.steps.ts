@@ -1,35 +1,32 @@
-import { test as base, createBdd } from 'playwright-bdd';
-import { expect } from '@playwright/test';
-import { LoginPage } from '../pages/login-page';
-import { ProjectsListPage } from '../pages/projects-list-page';
+import { Given, When, Then, expect } from '../fixtures/test';
 
-const { Given, When, Then } = createBdd(base);
-
-Given('I am on the login page', async ({ page }) => {
-  await new LoginPage(page).goto();
+Given('I am on the login page', async ({ loginPage }) => {
+  await loginPage.goto();
 });
 
 When(
   'I sign in with email {string} and password {string}',
-  async ({ page }, email: string, password: string) => {
-    await new LoginPage(page).signIn(email, password);
+  async ({ loginPage }, email: string, password: string) => {
+    await loginPage.signIn(email, password);
   },
 );
 
-When('I open the login page again', async ({ page }) => {
-  await new LoginPage(page).goto();
+When('I open the login page again', async ({ loginPage }) => {
+  await loginPage.goto();
 });
 
-Then('I land on the projects page', async ({ page }) => {
-  const projects = new ProjectsListPage(page);
+Then('I land on the projects page', async ({ page, projectsListPage }) => {
   await expect(page).toHaveURL(/\/projects/);
-  await expect(projects.heading).toBeVisible();
+  await expect(projectsListPage.heading).toBeVisible();
 });
 
-Then('I see the error {string}', async ({ page }, message: string) => {
-  await expect(new LoginPage(page).errorMessage).toHaveText(message);
+Then('I see the error {string}', async ({ loginPage }, message: string) => {
+  await expect(loginPage.errorMessage).toHaveText(message);
 });
 
-Then('I see the project {string} in the list', async ({ page }, name: string) => {
-  await expect(new ProjectsListPage(page).row(name)).toBeVisible();
-});
+Then(
+  'I see the project {string} in the list',
+  async ({ projectsListPage }, name: string) => {
+    await expect(projectsListPage.row(name)).toBeVisible();
+  },
+);
