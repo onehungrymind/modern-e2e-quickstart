@@ -18,3 +18,10 @@ Feature: Login
     Then I land on the projects page
     When I open the login page again
     Then I land on the projects page
+
+  @projects @module-02
+  Scenario: the seeded admin sees the Apollo project in the list
+    Given I am on the login page
+    When I sign in with email "admin@example.com" and password "Admin123!"
+    Then I land on the projects page
+    And I see the project "Apollo Launch" in the list
