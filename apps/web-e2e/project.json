@@ -1,0 +1,28 @@
+{
+  "name": "web-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/web-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["web", "api"],
+  "targets": {
+    "bdd-gen": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bddgen --config=apps/web-e2e/playwright.config.ts",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/web-e2e"],
+      "dependsOn": ["bdd-gen"],
+      "options": {
+        "config": "apps/web-e2e/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

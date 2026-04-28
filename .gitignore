@@ -1,0 +1,54 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build outputs
+dist
+tmp
+.nx/cache
+.nx/workspace-data
+
+# Vite
+apps/web/dist
+
+# NestJS
+apps/api/dist
+
+# Playwright
+apps/web-e2e/test-results
+apps/web-e2e/playwright-report
+apps/web-e2e/.auth
+apps/web-e2e/.cucumber
+apps/web-e2e/src/.features-gen
+test-results
+playwright-report
+
+# Prisma
+apps/api/prisma/*.db
+apps/api/prisma/*.db-journal
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
