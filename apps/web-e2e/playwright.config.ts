@@ -14,6 +14,7 @@ const webBaseURL = process.env['E2E_BASE_URL'] ?? 'http://localhost:4200';
 const apiBaseURL = process.env['E2E_API_BASE_URL'] ?? 'http://localhost:3000';
 
 export default defineConfig({
+  testDir,
   fullyParallel: true,
   workers: process.env['CI'] ? 2 : 4,
   timeout: 30_000,
@@ -23,6 +24,9 @@ export default defineConfig({
   reporter: process.env['CI']
     ? [['dot'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]
     : [['list'], ['html', { open: 'never', outputFolder: 'playwright-report' }]],
+
+  globalSetup: path.resolve(__dirname, 'src/support/global-setup.ts'),
+  globalTeardown: path.resolve(__dirname, 'src/support/global-teardown.ts'),
 
   use: {
     baseURL: webBaseURL,
