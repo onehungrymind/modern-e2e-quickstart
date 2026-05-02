@@ -1,5 +1,5 @@
 import type { Locator, Page } from '@playwright/test';
-import { expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import { BasePage } from './base-page';
 
 export class ProjectsListPage extends BasePage {
@@ -68,11 +68,19 @@ export class ProjectsListPage extends BasePage {
   }
 
   async createProject(name: string, description?: string) {
-    await this.openNewProjectForm();
-    await this.fillNewProjectName(name);
-    if (description) await this.fillNewProjectDescription(description);
-    await this.submitNewProjectForm();
-    await this.newForm.waitFor({ state: 'detached' });
+    await test.step(`create project "${name}"`, async () => {
+      await test.step('open new-project form', async () => {
+        await this.openNewProjectForm();
+      });
+      await test.step('fill form fields', async () => {
+        await this.fillNewProjectName(name);
+        if (description) await this.fillNewProjectDescription(description);
+      });
+      await test.step('submit and wait for close', async () => {
+        await this.submitNewProjectForm();
+        await this.newForm.waitFor({ state: 'detached' });
+      });
+    });
   }
 
   async search(query: string) {
