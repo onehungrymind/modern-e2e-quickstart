@@ -31,12 +31,11 @@ npm ci
 
 # 3. Install Playwright browsers (one-time, ~150MB)
 npx playwright install chromium
-
-# 4. Switch to the workshop branch
-git checkout workshop/main
 ```
 
-The `workshop/main` branch is where the 25 module checkpoints live. The default `main` branch holds the finished reference suite as a permanent reference — leave it alone unless you want to peek at the "after" state.
+You're already on `main`. The tip of `main` is the **opinionated reference**: the complete app + the complete E2E suite, post-curriculum polish included. Tag **`12-complete`** marks the canonical "workshop graduate" state — that's what your work should resemble when you finish the modules. Tags `00-setup` through `12-complete` are the 25 checkpoints between "starting point" and "graduate."
+
+To start the workshop, run `npm run module:begin 00`. The script handles the git mechanics for you.
 
 ### Verify your environment
 
@@ -144,7 +143,7 @@ If you want the "why behind the patterns" without following the modules linearly
 | Browser | Chromium only (multi-browser matrix is out of scope for v1) |
 | Platform | macOS + Linux first-class; Windows via WSL2 |
 
-All decisions are documented in [`PLAN.md`](PLAN.md).
+Build-time scaffolding (`PLAN.md`, etc.) lives under [`_internal/`](_internal/) — it's preserved for the curious, not for users.
 
 ---
 

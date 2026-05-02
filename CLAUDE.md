@@ -2,7 +2,7 @@
 
 This file is loaded into every Claude Code session in this repo. Keep it short.
 
-**Source of truth for the build plan is `PLAN.md`.** Read it once per session. This file only captures durable rules that must survive across sessions.
+**Source of truth for the build plan is `_internal/PLAN.md`.** Read it once per session. This file only captures durable rules that must survive across sessions.
 
 ---
 
