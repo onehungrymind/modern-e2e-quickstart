@@ -10,7 +10,7 @@ A self-paced, hands-on workshop that teaches modern end-to-end testing with **Cu
 
 - **`apps/api/`** — a NestJS REST API (users, projects, tasks, JWT auth) backed by SQLite via Prisma. Seeds itself with dev users on boot. Exposes an env-guarded `/test/*` seam for fast E2E fixture creation.
 - **`apps/web/`** — a React + Vite + Tailwind app. Master-detail project management UI (projects list → detail with inline task CRUD, users list + detail, login/profile).
-- **`apps/web-e2e/`** — the E2E project. Built with [`playwright-bdd`](https://vitalets.github.io/playwright-bdd/), which compiles Gherkin `.feature` files into Playwright tests. 49 scenarios, parallel-safe, finishes in ~20s.
+- **`apps/web-e2e/`** — the E2E project. Built with [`playwright-bdd`](https://vitalets.github.io/playwright-bdd/), which compiles Gherkin `.feature` files into Playwright tests. 53 scenarios, parallel-safe, finishes in ~30s.
 - **`modules/`** — the workshop itself. 12 modules, each a focused README that walks you from empty E2E suite to full reference suite.
 - **`docs/concepts.md`** — high-level reference of every pattern used in the suite, with links to where each pattern lives in the code.
 

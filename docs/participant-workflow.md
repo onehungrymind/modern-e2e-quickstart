@@ -299,7 +299,7 @@ git checkout 12-complete
 npm run e2e
 ```
 
-Runs all 49 scenarios. Takes about 20 seconds. When you're done:
+Runs all 53 scenarios. Takes about 30 seconds. When you're done:
 
 ```bash
 git checkout my/03   # or wherever you were
