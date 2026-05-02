@@ -45,12 +45,11 @@ export class TasksService {
 
   async update(id: string, dto: UpdateTaskDto) {
     await this.findOne(id);
+    const dueDate =
+      dto.dueDate === null ? null : dto.dueDate ? new Date(dto.dueDate) : undefined;
     return this.prisma.task.update({
       where: { id },
-      data: {
-        ...dto,
-        dueDate: dto.dueDate ? new Date(dto.dueDate) : undefined,
-      },
+      data: { ...dto, dueDate },
     });
   }
 

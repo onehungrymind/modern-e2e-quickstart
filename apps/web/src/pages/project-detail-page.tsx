@@ -351,7 +351,7 @@ function TaskForm({
       description: description || undefined,
       status,
       priority,
-      dueDate: dueDate ? new Date(dueDate).toISOString() : undefined,
+      dueDate: dueDate ? new Date(dueDate).toISOString() : existing ? null : undefined,
       assigneeId: assigneeId || undefined,
     };
     try {

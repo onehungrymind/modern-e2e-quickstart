@@ -45,6 +45,14 @@ export class TaskForm {
     await this.assigneeSelect.selectOption({ label: name });
   }
 
+  async setDueDate(isoDate: string) {
+    await this.dueDateInput.fill(isoDate);
+  }
+
+  async clearDueDate() {
+    await this.dueDateInput.fill('');
+  }
+
   async save() {
     await this.saveButton.click();
     await this.waitForDetached();

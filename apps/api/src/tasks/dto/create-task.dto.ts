@@ -1,4 +1,4 @@
-import { IsDateString, IsIn, IsOptional, IsString, MinLength } from 'class-validator';
+import { IsDateString, IsIn, IsOptional, IsString, MinLength, ValidateIf } from 'class-validator';
 
 export class CreateTaskDto {
   @IsString()
@@ -17,9 +17,9 @@ export class CreateTaskDto {
   @IsIn(['low', 'medium', 'high'])
   priority?: string;
 
-  @IsOptional()
+  @ValidateIf((_, v) => v !== null && v !== undefined)
   @IsDateString()
-  dueDate?: string;
+  dueDate?: string | null;
 
   @IsOptional()
   @IsString()
