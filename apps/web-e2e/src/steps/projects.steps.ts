@@ -1,5 +1,6 @@
 import { Given, When, Then, expect, resolveProjectName } from '../fixtures/test';
 import { DataTable } from 'playwright-bdd';
+import { test } from '@playwright/test';
 
 Given(
   'a project {string} seeded via the API for the current user',
@@ -20,14 +21,20 @@ Given(
     const user = scenarioWorld.seededUser;
     if (!user) throw new Error('Login step must run first');
     const project = await seedProject({ ownerId: user.id, name });
+    const tasks = [];
     for (const row of table.hashes()) {
-      await seedTask({
+      const task = await seedTask({
         projectId: project.id,
         title: row['title'],
         status: row['status'] as 'todo' | 'doing' | 'done',
         priority: row['priority'] as 'low' | 'medium' | 'high',
       });
+      tasks.push(task);
     }
+    await test.info().attach('seeded-fixture', {
+      body: JSON.stringify({ project, tasks }, null, 2),
+      contentType: 'application/json',
+    });
   },
 );
 
