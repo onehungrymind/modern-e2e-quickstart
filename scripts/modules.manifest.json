@@ -1,0 +1,105 @@
+{
+  "description": "Workshop module tag manifest. Each entry maps a tag name to the git commit SHA it points at. scripts/rebuild-tags.mjs reads this file to recreate or move tags after history changes.",
+  "tags": [
+    {
+      "tag": "00-setup",
+      "commit": "62ba75dada4dc302dd61ef147d5f33207794c4a9"
+    },
+    {
+      "tag": "01-start",
+      "commit": "62ba75dada4dc302dd61ef147d5f33207794c4a9"
+    },
+    {
+      "tag": "01-complete",
+      "commit": "1a368327e32fbb3cba7966daf54a803448fb34a8"
+    },
+    {
+      "tag": "02-start",
+      "commit": "1a368327e32fbb3cba7966daf54a803448fb34a8"
+    },
+    {
+      "tag": "02-complete",
+      "commit": "586f8256582cb25e32b14c397ce4d345537857d0"
+    },
+    {
+      "tag": "03-start",
+      "commit": "586f8256582cb25e32b14c397ce4d345537857d0"
+    },
+    {
+      "tag": "03-complete",
+      "commit": "3a3fef4e2fb48b3a4e3b4f7300d96676392c7171"
+    },
+    {
+      "tag": "04-start",
+      "commit": "3a3fef4e2fb48b3a4e3b4f7300d96676392c7171"
+    },
+    {
+      "tag": "04-complete",
+      "commit": "eab4dcd599d2e2d567d2fd497258147752de96b8"
+    },
+    {
+      "tag": "05-start",
+      "commit": "eab4dcd599d2e2d567d2fd497258147752de96b8"
+    },
+    {
+      "tag": "05-complete",
+      "commit": "e58cd29019eb3e42f9f34a7966d7d8dc11f4f6a3"
+    },
+    {
+      "tag": "06-start",
+      "commit": "e58cd29019eb3e42f9f34a7966d7d8dc11f4f6a3"
+    },
+    {
+      "tag": "06-complete",
+      "commit": "897c2d185e54d6b43f22a440f623ac3e8e485d68"
+    },
+    {
+      "tag": "07-start",
+      "commit": "897c2d185e54d6b43f22a440f623ac3e8e485d68"
+    },
+    {
+      "tag": "07-complete",
+      "commit": "ff033112ded76ce1d071d0922b373e939331bab0"
+    },
+    {
+      "tag": "08-start",
+      "commit": "ff033112ded76ce1d071d0922b373e939331bab0"
+    },
+    {
+      "tag": "08-complete",
+      "commit": "c2f6b12df184587ad4fd114c1adcefae2589a920"
+    },
+    {
+      "tag": "09-start",
+      "commit": "c2f6b12df184587ad4fd114c1adcefae2589a920"
+    },
+    {
+      "tag": "09-complete",
+      "commit": "012f99d895b9e9b854f1265417a227a876f8b4b4"
+    },
+    {
+      "tag": "10-start",
+      "commit": "41f7ee5eb5335a91326d8cfc674d0bf78f73e7e9"
+    },
+    {
+      "tag": "10-complete",
+      "commit": "8dc4680f4dd24f1126a45fb1e5a2f1cb897645fd"
+    },
+    {
+      "tag": "11-start",
+      "commit": "8dc4680f4dd24f1126a45fb1e5a2f1cb897645fd"
+    },
+    {
+      "tag": "11-complete",
+      "commit": "cf73020b0fabe2fc17cfbb7398c79215acd951d1"
+    },
+    {
+      "tag": "12-start",
+      "commit": "cf73020b0fabe2fc17cfbb7398c79215acd951d1"
+    },
+    {
+      "tag": "12-complete",
+      "commit": "6579648e74ccb9d1d4f16fe5d629eac5e20975c0"
+    }
+  ]
+}
