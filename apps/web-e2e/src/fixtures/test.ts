@@ -3,6 +3,8 @@ import { randomBytes } from 'node:crypto';
 import { apiRequest } from '../support/api-client';
 import { LoginPage } from '../pages/login-page';
 import { ProjectsListPage } from '../pages/projects-list-page';
+import { AppShellPage } from '../pages/app-shell-page';
+import { SessionHelper } from '../support/session';
 
 export type ScenarioWorld = {
   scenarioId: string;
@@ -14,6 +16,8 @@ export type ScenarioWorld = {
 type Fixtures = {
   loginPage: LoginPage;
   projectsListPage: ProjectsListPage;
+  appShell: AppShellPage;
+  session: SessionHelper;
   scenarioWorld: ScenarioWorld;
 };
 
@@ -24,6 +28,14 @@ export const test = base.extend<Fixtures>({
 
   projectsListPage: async ({ page }, use) => {
     await use(new ProjectsListPage(page));
+  },
+
+  appShell: async ({ page }, use) => {
+    await use(new AppShellPage(page));
+  },
+
+  session: async ({ page, context }, use) => {
+    await use(new SessionHelper(page, context));
   },
 
   scenarioWorld: async ({}, use) => {

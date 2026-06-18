@@ -1,4 +1,5 @@
 import type { Locator, Page } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { BasePage } from './base-page';
 
 export class LoginPage extends BasePage {
@@ -23,5 +24,14 @@ export class LoginPage extends BasePage {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.submitButton.click();
+  }
+
+  async expectOnLoginPage() {
+    await expect(this.page).toHaveURL(/\/login/);
+  }
+
+  async expectReturnToParam(path: string) {
+    const escaped = encodeURIComponent(path).replace(/[/]/g, '\\$&');
+    await expect(this.page).toHaveURL(new RegExp(`/login\\?returnTo=${escaped}`));
   }
 }
