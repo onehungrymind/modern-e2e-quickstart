@@ -1,4 +1,4 @@
-@auth @module-05 @module-08
+@auth @module-06
 Feature: Stored auth session skips the login UI
 
   Scenario: admin lands straight on /projects

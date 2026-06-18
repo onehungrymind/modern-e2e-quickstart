@@ -1,4 +1,4 @@
-# Module 10 — Debugging
+# Module 13 — Debugging
 
 ## What you'll learn
 
@@ -14,8 +14,8 @@ When a test fails, the stack trace tells you *what assertion failed*. It rarely 
 
 ## Prerequisites
 
-- Module 09 complete
-- `git checkout 10-start`
+- Module 12 complete
+- `git checkout 13-start`
 
 This module is tool-focused — fewer code changes, more hands-on exploration.
 
@@ -109,7 +109,7 @@ Opens `playwright-report/index.html`. Every scenario expandable, traces viewable
 
 ## Exercise
 
-1. Pick any `@module-06` scenario. Run it with `--ui`. Practice scrubbing through every step. Identify where the DOM first becomes the state your assertion checks.
+1. Pick any `@module-07` scenario. Run it with `--ui`. Practice scrubbing through every step. Identify where the DOM first becomes the state your assertion checks.
 2. Break the `"I land on the projects page"` step — change the URL regex to something that doesn't match. Run the scenario. Use the resulting trace to find the exact moment your assertion diverges from reality.
 3. Insert `await test.step(...)` groupings into `projectsListPage.createProject()`. Re-run the @projects scenarios and view the report — notice the step structure in the trace timeline.
 
@@ -124,7 +124,7 @@ npm run e2e:report   # open the last HTML report
 ## Compare
 
 ```bash
-git diff 10-complete -- apps/web-e2e
+git diff 13-complete -- apps/web-e2e
 ```
 
 ## Cheat sheet
@@ -147,4 +147,4 @@ git diff 10-complete -- apps/web-e2e
 
 ## Next
 
-→ [Module 11 — Reporting](../11-reporting/README.md)
+→ [Module 14 — Reporting](../14-reporting/README.md)

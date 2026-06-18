@@ -1,4 +1,4 @@
-@users @module-06
+@users @module-09
 Feature: Users list and detail
 
   Background:

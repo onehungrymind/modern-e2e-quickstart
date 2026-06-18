@@ -1,4 +1,4 @@
-# Module 07 — Network mocking & interception
+# Module 10 — Network mocking & interception
 
 ## What you'll learn
 
@@ -19,8 +19,8 @@ Some scenarios are expensive or impossible to produce against a real backend:
 
 ## Prerequisites
 
-- Module 06 complete
-- `git checkout 07-start`
+- Module 09 complete
+- `git checkout 10-start`
 
 ## Walkthrough
 
@@ -44,7 +44,7 @@ await page.route(
 `features/projects/network-mock.feature`:
 
 ```gherkin
-@projects @module-07
+@projects @module-10
 Scenario: server error on project list surfaces an error message
   Given an E2E member is logged in
   And the API returns 500 for the projects list
@@ -127,9 +127,9 @@ Used in `features/auth/expired-session.feature` to prove the global 401 handler 
 
 The instinct to mock grows. Resist it.
 
-- **Happy paths** — seed via API (Module 06), hit the real backend. You catch real bugs that way.
+- **Happy paths** — seed via API (Module 07), hit the real backend. You catch real bugs that way.
 - **Data-shape changes** — don't mock if you can seed. Mocks freeze a snapshot of the API shape; real calls catch drift.
-- **Auth** — except for expired-session and similar edge cases, real login is fine (see `storageState`, Module 05).
+- **Auth** — except for expired-session and similar edge cases, real login is fine (see `storageState`, Module 06).
 
 Mock for:
 - Error states (4xx, 5xx)
@@ -146,13 +146,13 @@ Mock for:
 ## Run it
 
 ```bash
-npm run e2e -- --grep @module-07
+npm run e2e -- --grep @module-10
 ```
 
 ## Compare
 
 ```bash
-git diff 07-complete -- apps/web-e2e
+git diff 10-complete -- apps/web-e2e
 ```
 
 ## Cheat sheet
@@ -180,4 +180,4 @@ await route.fulfill({
 
 ## Next
 
-→ [Module 08 — Custom commands & step composition](../08-custom-commands/README.md)
+→ [Module 11 — Custom commands & step composition](../11-custom-commands/README.md)

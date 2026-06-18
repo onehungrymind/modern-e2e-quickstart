@@ -1,4 +1,4 @@
-@projects @module-06
+@projects @module-08
 Feature: Project ownership rules
 
   Scenario: owner can delete their own project

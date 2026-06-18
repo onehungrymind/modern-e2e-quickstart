@@ -1,4 +1,4 @@
-@projects @module-07
+@projects @module-10
 Feature: Network interception — slow responses and POST errors
 
   Background:

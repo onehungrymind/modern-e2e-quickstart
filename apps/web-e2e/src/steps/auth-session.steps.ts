@@ -36,3 +36,19 @@ When(
     await loginPage.signIn(email, password);
   },
 );
+
+When('I visit the projects page', async ({ projectsListPage }) => {
+  await projectsListPage.goto();
+});
+
+When('I log out from the top nav', async ({ appShell }) => {
+  await appShell.logout();
+});
+
+Then('I land on the login page', async ({ loginPage }) => {
+  await loginPage.expectOnLoginPage();
+});
+
+Then('I am on the projects page', async ({ projectsListPage }) => {
+  await projectsListPage.expectLanded();
+});

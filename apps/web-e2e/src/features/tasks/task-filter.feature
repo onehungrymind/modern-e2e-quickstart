@@ -1,4 +1,4 @@
-@tasks @module-06
+@tasks @module-08
 Feature: Filter tasks by status
 
   Background:

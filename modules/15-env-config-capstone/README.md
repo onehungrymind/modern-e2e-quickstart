@@ -1,4 +1,4 @@
-# Module 12 — Env config + capstone
+# Module 15 — Env config + capstone
 
 ## What you'll learn
 
@@ -14,8 +14,8 @@ And by now, you should be able to add a feature without a walkthrough. The capst
 
 ## Prerequisites
 
-- Module 11 complete
-- `git checkout 12-start`
+- Module 14 complete
+- `git checkout 15-start`
 
 ## Walkthrough
 
@@ -58,7 +58,7 @@ What needs to be true for this to work:
 - The staging web points at the staging api
 - Your network allows Playwright to reach both
 
-If any of those isn't true, you run against local and mock external dependencies (back to Module 07).
+If any of those isn't true, you run against local and mock external dependencies (back to Module 10).
 
 ### 4. The `webServer` config
 
@@ -140,10 +140,10 @@ npm run e2e
 ## Compare
 
 ```bash
-git diff 12-complete -- apps/web-e2e
+git diff 15-complete -- apps/web-e2e
 ```
 
-Note: `12-complete` in this repo contains *one possible* capstone solution. Yours will look different — that's the point.
+Note: `15-complete` in this repo contains *one possible* capstone solution. Yours will look different — that's the point.
 
 ## Cheat sheet
 
@@ -173,7 +173,7 @@ Assumptions: the staging api has the `/test/*` seam (or your suite has been adap
 - [ ] At least one happy-path scenario
 - [ ] At least one error/edge scenario
 - [ ] No `page.getByX` inside step defs (POM discipline from Module 02)
-- [ ] Names scoped with `scenarioId` via seed fixtures (Module 06)
+- [ ] Names scoped with `scenarioId` via seed fixtures (Module 07)
 - [ ] Green twice in a row
 
 ## You're done

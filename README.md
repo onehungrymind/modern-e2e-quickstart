@@ -11,7 +11,7 @@ A self-paced, hands-on workshop that teaches modern end-to-end testing with **Cu
 - **`apps/api/`** — a NestJS REST API (users, projects, tasks, JWT auth) backed by SQLite via Prisma. Seeds itself with dev users on boot. Exposes an env-guarded `/test/*` seam for fast E2E fixture creation.
 - **`apps/web/`** — a React + Vite + Tailwind app. Master-detail project management UI (projects list → detail with inline task CRUD, users list + detail, login/profile).
 - **`apps/web-e2e/`** — the E2E project. Built with [`playwright-bdd`](https://vitalets.github.io/playwright-bdd/), which compiles Gherkin `.feature` files into Playwright tests. 53 scenarios, parallel-safe, finishes in ~30s.
-- **`modules/`** — the workshop itself. 12 modules, each a focused README that walks you from empty E2E suite to full reference suite.
+- **`modules/`** — the workshop itself. 15 modules, each a focused README that walks you from empty E2E suite to full reference suite.
 - **`docs/concepts.md`** — high-level reference of every pattern used in the suite, with links to where each pattern lives in the code.
 
 ---
@@ -33,7 +33,7 @@ npm ci
 npx playwright install chromium
 ```
 
-You're already on `main`. The tip of `main` is the **opinionated reference**: the complete app + the complete E2E suite, post-curriculum polish included. Tag **`12-complete`** marks the canonical "workshop graduate" state — that's what your work should resemble when you finish the modules. Tags `00-setup` through `12-complete` are the 25 checkpoints between "starting point" and "graduate."
+You're already on `main`. The tip of `main` is the **opinionated reference**: the complete app + the complete E2E suite, post-curriculum polish included. Tag **`15-complete`** marks the canonical "workshop graduate" state — that's what your work should resemble when you finish the modules. Tags `00-setup` through `15-complete` are the 31 checkpoints between "starting point" and "graduate."
 
 To start the workshop, run `npm run module:begin 00`. The script handles the git mechanics for you.
 
@@ -68,7 +68,7 @@ If you can log in and see the projects list, you're ready. `Ctrl+C` stops the se
 
 ## How the workshop works
 
-**13 modules** numbered `00` through `12`. Each module is a 30–60 minute focused chunk. Module 00 is environment setup (no code). Modules 01–12 each have you write a small piece of the test suite.
+**16 modules** numbered `00` through `15`. Each module is a 30–60 minute focused chunk. Module 00 is environment setup (no code). Modules 01–15 each have you write a small piece of the test suite.
 
 Each module has two **git tags** (think: named bookmarks):
 
@@ -110,16 +110,19 @@ The `module:*` scripts are thin wrappers around git. You can do the same with ra
 | [02](modules/02-page-objects-locator-strategy/README.md) | Page objects + locator strategy | `LoginPage`, `BasePage`, refactor steps to POM |
 | [03](modules/03-fixtures-hooks-world/README.md) | Fixtures, hooks, world | `scenarioWorld`, `seedUser` fixture, cleanup |
 | [04](modules/04-tagging-outlines-data-tables/README.md) | Tagging, outlines, data tables | `@smoke`, `Scenario Outline`, `| title | status |` |
-| [05](modules/05-auth-storage-state/README.md) | Auth & storage state | `storageState` per role, login-once-per-worker |
-| [06](modules/06-api-ui-hybrid/README.md) | API + UI hybrid | Seed data via `/test/seed/*`, assert via UI |
-| [07](modules/07-network-mocking-interception/README.md) | Network mocking | `page.route` stubs: slow, error, offline |
-| [08](modules/08-custom-commands/README.md) | Custom commands / step composition | `Given I am logged in as {role}` |
-| [09](modules/09-parallel-retries-flake/README.md) | Parallel, retries, flake | `fullyParallel`, `--repeat-each`, the `@flaky` demo |
-| [10](modules/10-debugging/README.md) | Debugging | UI mode, trace viewer, `test.step()`, `page.pause()` |
-| [11](modules/11-reporting/README.md) | Reporting | HTML report, cucumber JSON, optional Allure |
-| [12](modules/12-env-config-capstone/README.md) | Env config + capstone | `.env`/config, write a feature solo |
+| [05](modules/05-storage-state-login-once/README.md) | Storage state: log in once | `globalSetup`, `.auth/*.json` per role, JWT pinning |
+| [06](modules/06-using-sessions/README.md) | Using sessions in scenarios | `session` helper, `Given I am logged in as`, `@anonymous` |
+| [07](modules/07-test-seam-seed-fixtures/README.md) | The `/test` seam + seed fixtures | seed via `/test/seed/*`, seed fixtures, assert via UI |
+| [08](modules/08-projects-tasks-hybrid/README.md) | Projects & tasks with the hybrid pattern | project/task CRUD, filter, validation, ownership |
+| [09](modules/09-users-isolation/README.md) | Users + isolation proof | users pages, parallel-safety via the `E2E_` prefix |
+| [10](modules/10-network-mocking-interception/README.md) | Network mocking | `page.route` stubs: slow, error, offline |
+| [11](modules/11-custom-commands/README.md) | Custom commands / step composition | `Given I am logged in as {role}` |
+| [12](modules/12-parallel-retries-flake/README.md) | Parallel, retries, flake | `fullyParallel`, `--repeat-each`, the `@flaky` demo |
+| [13](modules/13-debugging/README.md) | Debugging | UI mode, trace viewer, `test.step()`, `page.pause()` |
+| [14](modules/14-reporting/README.md) | Reporting | HTML report, cucumber JSON, optional Allure |
+| [15](modules/15-env-config-capstone/README.md) | Env config + capstone | `.env`/config, write a feature solo |
 
-Total time: a focused pass through all 12 modules takes **6–10 hours**. Do it over a couple of evenings or a weekend.
+Total time: a focused pass through all 15 modules takes **6–10 hours**. Do it over a couple of evenings or a weekend.
 
 ---
 
