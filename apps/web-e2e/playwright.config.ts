@@ -22,8 +22,16 @@ export default defineConfig({
   forbidOnly: !!process.env['CI'],
   retries: process.env['CI'] ? 1 : 0,
   reporter: process.env['CI']
-    ? [['dot'], ['html', { open: 'never', outputFolder: 'playwright-report' }]]
-    : [['list'], ['html', { open: 'never', outputFolder: 'playwright-report' }]],
+    ? [
+        ['dot'],
+        ['html', { open: 'never', outputFolder: 'playwright-report' }],
+        ['junit', { outputFile: 'playwright-report/junit.xml' }],
+      ]
+    : [
+        ['list'],
+        ['html', { open: 'never', outputFolder: 'playwright-report' }],
+        ['junit', { outputFile: 'playwright-report/junit.xml' }],
+      ],
 
   globalSetup: path.resolve(__dirname, 'src/support/global-setup.ts'),
   globalTeardown: path.resolve(__dirname, 'src/support/global-teardown.ts'),
