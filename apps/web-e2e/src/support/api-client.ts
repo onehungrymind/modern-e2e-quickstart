@@ -1,53 +1,49 @@
-const baseUrl = process.env['E2E_API_BASE_URL'] ?? 'http://localhost:3000';
+import { E2E_API_BASE_URL } from './env';
+
+type RequestOptions = {
+  method?: 'GET' | 'POST' | 'PATCH' | 'DELETE';
+  body?: unknown;
+  token?: string | null;
+};
 
 export class ApiClientError extends Error {
-  constructor(
-    public readonly status: number,
-    public readonly payload: unknown,
-    message: string,
-  ) {
+  readonly status: number;
+  readonly payload: unknown;
+  constructor(status: number, message: string, payload: unknown) {
     super(message);
-    this.name = 'ApiClientError';
+    this.status = status;
+    this.payload = payload;
   }
 }
 
-type Headers = Record<string, string>;
-
-function buildHeaders(token?: string, hasBody = false): Headers {
-  const headers: Headers = {};
-  if (hasBody) headers['Content-Type'] = 'application/json';
+export async function apiRequest<T = unknown>(
+  path: string,
+  { method = 'GET', body, token }: RequestOptions = {},
+): Promise<T> {
+  const headers: Record<string, string> = {};
+  if (body !== undefined) headers['Content-Type'] = 'application/json';
   if (token) headers['Authorization'] = `Bearer ${token}`;
-  return headers;
-}
 
-async function parse<T>(res: Response): Promise<T> {
+  const res = await fetch(`${E2E_API_BASE_URL}${path}`, {
+    method,
+    headers,
+    body: body !== undefined ? JSON.stringify(body) : undefined,
+  });
+
   if (res.status === 204) return undefined as T;
-  const text = await res.text();
-  const payload = text ? JSON.parse(text) : undefined;
+
+  const ct = res.headers.get('content-type') ?? '';
+  const payload = ct.includes('application/json') ? await res.json() : await res.text();
+
   if (!res.ok) {
-    throw new ApiClientError(res.status, payload, `${res.status} ${res.statusText}`);
+    const msg =
+      typeof payload === 'object' && payload !== null && 'message' in payload
+        ? Array.isArray((payload as { message: unknown }).message)
+          ? (payload as { message: string[] }).message.join(', ')
+          : String((payload as { message: unknown }).message)
+        : `Request failed (${res.status})`;
+    throw new ApiClientError(res.status, msg, payload);
   }
+
   return payload as T;
 }
-
-export const apiClient = {
-  async get<T>(path: string, token?: string): Promise<T> {
-    const res = await fetch(`${baseUrl}${path}`, { headers: buildHeaders(token) });
-    return parse<T>(res);
-  },
-  async post<T>(path: string, body: unknown, token?: string): Promise<T> {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method: 'POST',
-      headers: buildHeaders(token, true),
-      body: JSON.stringify(body),
-    });
-    return parse<T>(res);
-  },
-  async delete(path: string, token?: string): Promise<void> {
-    const res = await fetch(`${baseUrl}${path}`, {
-      method: 'DELETE',
-      headers: buildHeaders(token),
-    });
-    await parse<void>(res);
-  },
-};

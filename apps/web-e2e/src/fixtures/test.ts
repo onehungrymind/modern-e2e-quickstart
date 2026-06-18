@@ -1,8 +1,8 @@
 import { test as base, createBdd } from 'playwright-bdd';
 import { randomBytes } from 'node:crypto';
+import { apiRequest } from '../support/api-client';
 import { LoginPage } from '../pages/login-page';
 import { ProjectsListPage } from '../pages/projects-list-page';
-import { apiClient } from '../support/api-client';
 
 export type ScenarioWorld = {
   scenarioId: string;
@@ -15,7 +15,6 @@ type Fixtures = {
   loginPage: LoginPage;
   projectsListPage: ProjectsListPage;
   scenarioWorld: ScenarioWorld;
-  apiClient: typeof apiClient;
 };
 
 export const test = base.extend<Fixtures>({
@@ -36,15 +35,19 @@ export const test = base.extend<Fixtures>({
     };
     await use(world);
     for (const id of world.createdTaskIds) {
-      await apiClient.delete(`/tasks/${id}`).catch(() => undefined);
+      try {
+        await apiRequest(`/tasks/${id}`, { method: 'DELETE' });
+      } catch {
+        // globalTeardown sweeps E2E_ data as belt-and-suspenders
+      }
     }
     for (const id of world.createdProjectIds) {
-      await apiClient.delete(`/projects/${id}`).catch(() => undefined);
+      try {
+        await apiRequest(`/projects/${id}`, { method: 'DELETE' });
+      } catch {
+        // ditto
+      }
     }
-  },
-
-  apiClient: async ({}, use) => {
-    await use(apiClient);
   },
 });
 
