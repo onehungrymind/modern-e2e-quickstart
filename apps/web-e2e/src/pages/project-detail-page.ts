@@ -44,6 +44,10 @@ export class ProjectDetailPage extends BasePage {
     return this.taskRow(title).getByTestId('task-row-assignee');
   }
 
+  taskRowDue(title: string): Locator {
+    return this.taskRow(title).getByTestId('task-row-due');
+  }
+
   async filterByStatus(status: 'todo' | 'doing' | 'done' | 'all') {
     await this.statusFilter.selectOption(status === 'all' ? '' : status);
   }

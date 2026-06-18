@@ -38,6 +38,18 @@ Given(
 );
 
 Given(
+  'a task {string} in {string} due {string}',
+  async ({ scenarioWorld, seedTask }, title: string, projectName: string, dueDate: string) => {
+    const projectId = projectIdFromWorld(scenarioWorld, projectName);
+    await seedTask({
+      projectId,
+      title: title.replace(/^E2E_/, ''),
+      dueDate,
+    });
+  },
+);
+
+Given(
   'a task {string} in {string} assigned to {string}',
   async ({ scenarioWorld, seedTask }, title: string, projectName: string, userKey: string) => {
     const projectId = projectIdFromWorld(scenarioWorld, projectName);
@@ -102,6 +114,26 @@ When(
 );
 
 When(
+  'I edit the task {string} setting due date to {string}',
+  async ({ projectDetailPage, scenarioWorld }, taskTitle: string, dueDate: string) => {
+    const resolved = resolveTaskTitle(scenarioWorld, taskTitle);
+    await projectDetailPage.openEditTaskForm(resolved);
+    await projectDetailPage.taskForm.setDueDate(dueDate);
+    await projectDetailPage.taskForm.save();
+  },
+);
+
+When(
+  'I edit the task {string} clearing the due date',
+  async ({ projectDetailPage, scenarioWorld }, taskTitle: string) => {
+    const resolved = resolveTaskTitle(scenarioWorld, taskTitle);
+    await projectDetailPage.openEditTaskForm(resolved);
+    await projectDetailPage.taskForm.clearDueDate();
+    await projectDetailPage.taskForm.save();
+  },
+);
+
+When(
   'I assign the task {string} to myself',
   async ({ projectDetailPage, scenarioWorld }, taskTitle: string) => {
     const user = scenarioWorld.seededUser;
@@ -150,6 +182,22 @@ Then(
   async ({ projectDetailPage, scenarioWorld }, taskTitle: string, assignee: string) => {
     const resolved = resolveTaskTitle(scenarioWorld, taskTitle);
     await expect(projectDetailPage.taskRowAssignee(resolved)).toContainText(`assignee: ${assignee}`);
+  },
+);
+
+Then(
+  'the task {string} shows due date {string}',
+  async ({ projectDetailPage, scenarioWorld }, taskTitle: string, dueDate: string) => {
+    const resolved = resolveTaskTitle(scenarioWorld, taskTitle);
+    await expect(projectDetailPage.taskRowDue(resolved)).toContainText(`due: ${dueDate}`);
+  },
+);
+
+Then(
+  'the task {string} has no due date',
+  async ({ projectDetailPage, scenarioWorld }, taskTitle: string) => {
+    const resolved = resolveTaskTitle(scenarioWorld, taskTitle);
+    await expect(projectDetailPage.taskRowDue(resolved)).toHaveCount(0);
   },
 );
 
