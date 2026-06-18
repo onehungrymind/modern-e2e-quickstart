@@ -146,7 +146,12 @@ tag line changes. Then e2e green twice at tip.
 - **`an E2E member is logged in`** step: removed from 06's auth-session.steps; re-added in 07 (seedUser exists).
 - **project-detail-page.ts trimmed in 07** (remove TaskForm import/member/openAddTaskForm/openEditTaskForm);
   full version + task-form.ts land in 08.
-- DONE & GREEN: 05 (8 passed, .auth produced), 06 (8 passed @module-06).
+- **`I am on the projects page`** also relocated → module 07 auth-session.steps.ts (login-extra needs it).
+  So 4 steps now live in 06/07 and MUST be removed from extra.steps.ts when building 08/09:
+  `I log out from the top nav`, `I land on the login page` (→06), `I am on the projects page` (→07),
+  and `I visit the projects page` was removed from projects.steps (→06).
+- **task-form.ts + full project-detail-page.ts land in module 08** (07 has trimmed detail page).
+- DONE & GREEN: 05 (8 passed, .auth), 06 (8 passed), 07 (3 passed @module-07).
 
 ## Manifest / tags
 25 start/complete tags + 00-setup. start tag = prior complete SHA. Build manifest AFTER commits exist.
