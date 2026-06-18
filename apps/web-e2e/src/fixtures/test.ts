@@ -6,6 +6,9 @@ import { LoginPage } from '../pages/login-page';
 import { ProjectsListPage } from '../pages/projects-list-page';
 import { ProjectDetailPage } from '../pages/project-detail-page';
 import { AppShellPage } from '../pages/app-shell-page';
+import { UsersListPage } from '../pages/users-list-page';
+import { UserDetailPage } from '../pages/user-detail-page';
+import { ProfilePage } from '../pages/profile-page';
 import { SessionHelper } from '../support/session';
 
 type ScenarioWorld = {
@@ -28,6 +31,9 @@ type Fixtures = {
   loginPage: LoginPage;
   projectsListPage: ProjectsListPage;
   projectDetailPage: ProjectDetailPage;
+  usersListPage: UsersListPage;
+  userDetailPage: UserDetailPage;
+  profilePage: ProfilePage;
   session: SessionHelper;
 };
 
@@ -104,6 +110,18 @@ export const test = base.extend<Fixtures>({
 
   projectDetailPage: async ({ page }, use) => {
     await use(new ProjectDetailPage(page));
+  },
+
+  usersListPage: async ({ page }, use) => {
+    await use(new UsersListPage(page));
+  },
+
+  userDetailPage: async ({ page }, use) => {
+    await use(new UserDetailPage(page));
+  },
+
+  profilePage: async ({ page }, use) => {
+    await use(new ProfilePage(page));
   },
 
   session: async ({ page, context }, use) => {
