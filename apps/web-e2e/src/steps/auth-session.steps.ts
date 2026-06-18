@@ -16,6 +16,12 @@ Then(
   },
 );
 
+Given('an E2E member is logged in', async ({ session, scenarioWorld, seedUser }) => {
+  const user = await seedUser({ role: 'member' });
+  scenarioWorld.seededUser = user;
+  await session.setStoredAuth(user);
+});
+
 Given('I am logged in as {string}', async ({ session }, role: string) => {
   await session.loadStorageStateForRole(role as E2ERole);
 });
@@ -41,4 +47,8 @@ When('I log out from the top nav', async ({ appShell }) => {
 
 Then('I land on the login page', async ({ loginPage }) => {
   await loginPage.expectOnLoginPage();
+});
+
+Then('I am on the projects page', async ({ projectsListPage }) => {
+  await projectsListPage.expectLanded();
 });

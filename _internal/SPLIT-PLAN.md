@@ -132,6 +132,22 @@ code commit, so it persists from root'. Fold meta commits (756738f manifest, 9e2
 VERIFY (server-free) before e2e: `git diff <new-09> 897c2d1 -- apps/web-e2e` should show ONLY @module
 tag line changes. Then e2e green twice at tip.
 
+## DEVIATIONS discovered during build (intermediate checkpoints were never green originally)
+- **api-client.ts (apiRequest rewrite) moved to module 05**, not 07. globalSetup→seed/index needs
+  `apiRequest`; the original old-05 was latently broken (api-client still the World-A `apiClient`
+  object). Module 07 no longer touches api-client.
+- **fixtures/test.ts is hand-built per checkpoint** (World-B `apiRequest` throughout), trimmed from the
+  897c2d1 full version (== main). 05: {loginPage,projectsListPage,scenarioWorld(no Maps)}. 06: +appShell
+  +session. 07: +seedUser/Project/Task +projectDetailPage +Map fields +resolve* helpers (NO user pages).
+  08: == 07. 09: full 897c2d1. The old World-A `apiClient` fixture is dropped (no step used it; main has none).
+- **3 session steps relocated to module 06** auth-session.steps.ts: `I visit the projects page`,
+  `I log out from the top nav`, `I land on the login page`. → MUST delete these from projects.steps.ts
+  (07) and extra.steps.ts (08) to avoid duplicate-step errors.
+- **`an E2E member is logged in`** step: removed from 06's auth-session.steps; re-added in 07 (seedUser exists).
+- **project-detail-page.ts trimmed in 07** (remove TaskForm import/member/openAddTaskForm/openEditTaskForm);
+  full version + task-form.ts land in 08.
+- DONE & GREEN: 05 (8 passed, .auth produced), 06 (8 passed @module-06).
+
 ## Manifest / tags
 25 start/complete tags + 00-setup. start tag = prior complete SHA. Build manifest AFTER commits exist.
 Post-merge: run `node scripts/rebuild-tags.mjs`.
