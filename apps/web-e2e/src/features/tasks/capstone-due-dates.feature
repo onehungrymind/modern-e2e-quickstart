@@ -1,4 +1,4 @@
-@tasks @capstone @module-12
+@tasks @capstone @module-15
 Feature: Task due dates (capstone)
 
   As a participant capstone, demonstrate seeding via API,

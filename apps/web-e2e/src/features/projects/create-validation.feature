@@ -1,4 +1,4 @@
-@projects @module-06
+@projects @module-08
 Feature: Create project validation
 
   Background:

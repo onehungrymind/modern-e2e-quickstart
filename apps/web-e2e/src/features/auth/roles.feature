@@ -1,4 +1,4 @@
-@auth @module-08
+@auth @module-11
 Feature: Role-scoped storage state
 
   Scenario: admin's profile page shows admin role

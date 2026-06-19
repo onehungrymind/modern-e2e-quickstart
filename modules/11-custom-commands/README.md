@@ -1,4 +1,4 @@
-# Module 08 — Custom commands & step composition
+# Module 11 — Custom commands & step composition
 
 ## What you'll learn
 
@@ -26,8 +26,8 @@ Same test, half the cognitive load. That's what this module teaches.
 
 ## Prerequisites
 
-- Module 07 complete
-- `git checkout 08-start`
+- Module 10 complete
+- `git checkout 11-start`
 
 ## Walkthrough
 
@@ -107,13 +107,13 @@ Where "set up" means: create user, create project, create 3 tasks, navigate, etc
 ## Run it
 
 ```bash
-npm run e2e -- --grep @module-08
+npm run e2e -- --grep @module-11
 ```
 
 ## Compare
 
 ```bash
-git diff 08-complete -- apps/web-e2e
+git diff 11-complete -- apps/web-e2e
 ```
 
 ## Cheat sheet
@@ -140,4 +140,4 @@ Given('high-level narrative sentence', async ({ fixtureA, fixtureB, scenarioWorl
 
 ## Next
 
-→ [Module 09 — Parallel, retries, flake](../09-parallel-retries-flake/README.md)
+→ [Module 12 — Parallel, retries, flake](../12-parallel-retries-flake/README.md)

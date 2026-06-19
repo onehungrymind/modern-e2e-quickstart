@@ -1,4 +1,4 @@
-@auth @module-05
+@auth @module-06
 Feature: Protected routes redirect with returnTo
 
   Background:

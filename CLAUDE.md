@@ -65,7 +65,7 @@ Layered priority: **role → label → text → testid → scope+filter**.
 
 ## Workshop delivery model
 
-Linear `main`, tagged commits: `00-setup → 01-start → 01-complete → ... → 12-complete`. Tags are rebuilt from `scripts/modules.manifest.json` via `scripts/rebuild-tags.mjs` (Node, not bash).
+Linear `main`, tagged commits: `00-setup → 01-start → 01-complete → ... → 15-complete`. Tags are rebuilt from `scripts/modules.manifest.json` via `scripts/rebuild-tags.mjs` (Node, not bash).
 
 **Participant workflow** via `scripts/module.mjs`:
 - `npm run module:begin NN` — checkout `NN-start`, create `my/NN` branch
@@ -110,7 +110,7 @@ If you hit any of these, stop and ask:
 
 - Any deviation from §2 locked decisions
 - Scope additions beyond §2 exclusions
-- Changes to the 12-module sequence in §6
+- Changes to the module sequence in §6 (now 15 modules; modules 05–06 split into 05–09)
 - Changes to the E2E isolation pattern (the `E2E_` prefix + seed helpers + cleanup discipline)
 
 ---

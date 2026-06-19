@@ -1,4 +1,4 @@
-@auth @module-01
+@auth @module-06
 Feature: Logout
 
   Scenario: logging out returns the user to the login page

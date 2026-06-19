@@ -38,10 +38,6 @@ Given(
   },
 );
 
-Given('I visit the projects page', async ({ projectsListPage }) => {
-  await projectsListPage.goto();
-});
-
 When('I create a project named {string}', async ({ projectsListPage }, name: string) => {
   await projectsListPage.createProject(name);
 });

@@ -1,4 +1,4 @@
-@module-09 @flaky
+@module-12 @flaky
 Feature: Deliberate flake demo
 
   # This scenario INTENTIONALLY violates the isolation pattern — no E2E_

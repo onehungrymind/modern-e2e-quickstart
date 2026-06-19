@@ -1,4 +1,4 @@
-@projects @module-06
+@projects @module-07
 Feature: Project CRUD (API seed + UI assert)
 
   Background:

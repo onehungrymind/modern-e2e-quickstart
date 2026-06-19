@@ -264,7 +264,7 @@ The step handler receives a `DataTable` and loops `.hashes()`.
 
 **What.** `playwright.config.ts` sets `fullyParallel: true` with 4 workers. Each test runs in its own browser context. With the isolation patterns above (§5, §6), parallelism is safe.
 
-**The `@flaky` demo.** [`features/flaky.feature`](../apps/web-e2e/src/features/flaky.feature) deliberately violates the isolation pattern (shared project name, no cleanup). Run it with `npm run e2e:flaky` — you'll see intermittent failures under parallel load. The fix is applying the same discipline the rest of the suite uses. That's Module 09.
+**The `@flaky` demo.** [`features/flaky.feature`](../apps/web-e2e/src/features/flaky.feature) deliberately violates the isolation pattern (shared project name, no cleanup). Run it with `npm run e2e:flaky` — you'll see intermittent failures under parallel load. The fix is applying the same discipline the rest of the suite uses. That's Module 12 (and the isolation contract itself is Module 09).
 
 ---
 

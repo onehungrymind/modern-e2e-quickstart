@@ -1,4 +1,4 @@
-# Module 11 — Reporting
+# Module 14 — Reporting
 
 ## What you'll learn
 
@@ -13,8 +13,8 @@ A test that fails in CI and leaves no trace might as well not have run. Good rep
 
 ## Prerequisites
 
-- Module 10 complete
-- `git checkout 11-start`
+- Module 13 complete
+- `git checkout 14-start`
 
 ## Walkthrough
 
@@ -100,7 +100,7 @@ Attachments show up in the HTML report next to each test. Great for "what state 
 ## Exercise
 
 1. Add a `junit` reporter output so a `junit.xml` is written alongside the HTML report. Verify the file is produced.
-2. In your favorite @module-06 scenario, add a `testInfo.attach(...)` call that records the seeded project + its tasks as JSON. Open the HTML report and verify the attachment.
+2. In your favorite @module-07 scenario, add a `testInfo.attach(...)` call that records the seeded project + its tasks as JSON. Open the HTML report and verify the attachment.
 3. (Stretch) Wire an allure reporter and produce an allure-results/ output. Generate the report. Skim the UI — is it actually more useful than the HTML report?
 
 ## Run it
@@ -113,7 +113,7 @@ npm run e2e:report   # open HTML
 ## Compare
 
 ```bash
-git diff 11-complete -- apps/web-e2e
+git diff 14-complete -- apps/web-e2e
 ```
 
 ## Cheat sheet
@@ -145,4 +145,4 @@ git diff 11-complete -- apps/web-e2e
 
 ## Next
 
-→ [Module 12 — Env config + capstone](../12-env-config-capstone/README.md)
+→ [Module 15 — Env config + capstone](../15-env-config-capstone/README.md)

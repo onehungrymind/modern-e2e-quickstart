@@ -1,4 +1,4 @@
-@auth @module-05 @anonymous
+@auth @module-06 @anonymous
 Feature: Anonymous users are redirected
 
   Scenario: accessing a protected page redirects to login with returnTo

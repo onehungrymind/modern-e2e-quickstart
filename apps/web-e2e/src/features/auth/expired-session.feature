@@ -1,4 +1,4 @@
-@auth @module-05 @module-07
+@auth @module-10
 Feature: Expired / invalid session redirects to login
 
   Scenario: 401 on a protected request redirects to login with returnTo

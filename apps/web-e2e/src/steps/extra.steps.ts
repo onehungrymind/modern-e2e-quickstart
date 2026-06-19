@@ -57,18 +57,6 @@ Given(
   },
 );
 
-When('I log out from the top nav', async ({ appShell }) => {
-  await appShell.logout();
-});
-
-Then('I land on the login page', async ({ loginPage }) => {
-  await loginPage.expectOnLoginPage();
-});
-
-Then('I am on the projects page', async ({ projectsListPage }) => {
-  await projectsListPage.expectLanded();
-});
-
 Then('my profile shows role {string}', async ({ profilePage }, role: string) => {
   await expect(profilePage.info).toContainText(role);
 });

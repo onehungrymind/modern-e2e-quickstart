@@ -6,7 +6,7 @@ This guide assumes you know almost no git. By the end, you'll know exactly how t
 
 ## What you're about to do
 
-The workshop is **13 modules**, numbered `00` through `12`. Each module is a small, focused chunk of work — usually 30 to 60 minutes. You'll write Cucumber feature files, TypeScript step definitions, and Page Objects, and watch a real browser drive the reference app.
+The workshop is **16 modules**, numbered `00` through `15`. Each module is a small, focused chunk of work — usually 30 to 60 minutes. You'll write Cucumber feature files, TypeScript step definitions, and Page Objects, and watch a real browser drive the reference app.
 
 Each module has two checkpoints saved as **git tags** (think of tags as named bookmarks):
 
@@ -295,7 +295,7 @@ Don't *edit* files while checked out at `03-complete` — that creates a mess. J
 ### "I want to see what the finished suite looks like"
 
 ```bash
-git checkout 12-complete
+git checkout 15-complete
 npm run e2e
 ```
 

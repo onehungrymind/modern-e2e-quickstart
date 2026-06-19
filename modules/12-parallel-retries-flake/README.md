@@ -1,4 +1,4 @@
-# Module 09 — Parallel, retries, and flake hunting
+# Module 12 — Parallel, retries, and flake hunting
 
 ## What you'll learn
 
@@ -13,8 +13,8 @@ A green suite is worthless if it's flaky. The single biggest cause of "we disabl
 
 ## Prerequisites
 
-- Module 08 complete
-- `git checkout 09-start`
+- Module 11 complete
+- `git checkout 12-start`
 
 ## Walkthrough
 
@@ -46,7 +46,7 @@ Source 1 dominates. If your parallel suite is flaking, start by auditing test is
 `apps/web-e2e/src/features/flaky.feature`:
 
 ```gherkin
-@module-09 @flaky
+@module-12 @flaky
 Feature: Deliberate flake demo
 
   Scenario: two workers race on a shared project name
@@ -55,7 +55,7 @@ Feature: Deliberate flake demo
     Then I see the project "Shared Project" in the list
 ```
 
-This scenario deliberately violates the isolation patterns from Module 06:
+This scenario deliberately violates the isolation patterns from Module 07:
 
 - **No `E2E_` prefix** on the user-visible name (bypassing the seed fixture's auto-suffix)
 - **No `scenarioId` in the project name** — every parallel run uses the literal string "Shared Project"
@@ -71,7 +71,7 @@ Expected: some runs pass, some fail with "resolved to N elements" strict-mode er
 
 ### 4. How to fix it
 
-Apply the isolation discipline from Module 06:
+Apply the isolation discipline from Module 07:
 
 ```ts
 // In the fixture, not in the feature file
@@ -117,7 +117,7 @@ npm run e2e:flaky
 ## Compare
 
 ```bash
-git diff 09-complete -- apps/web-e2e
+git diff 12-complete -- apps/web-e2e
 ```
 
 ## Cheat sheet
@@ -141,7 +141,7 @@ expect: { timeout: 10_000 },  // per-assertion
 --trace on             # always record traces
 ```
 
-**The isolation contract (from Module 06):**
+**The isolation contract (from Module 07):**
 
 - Unique data names per scenario (`scenarioId` suffix)
 - Prefix all E2E data (`E2E_` — enables sweep)
@@ -150,4 +150,4 @@ expect: { timeout: 10_000 },  // per-assertion
 
 ## Next
 
-→ [Module 10 — Debugging](../10-debugging/README.md)
+→ [Module 13 — Debugging](../13-debugging/README.md)
